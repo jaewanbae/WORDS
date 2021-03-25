@@ -47,6 +47,7 @@ h2 {
     position: absolute;
     left: 0;
     top: 0;
+    background-color: #F1E8D9;
 }
 
 .topCurtainRise {
@@ -137,13 +138,18 @@ input[type=text]:not(last-child) {
 }
 
 .checkmarkAnimation {
-    animation: checkmark 3s linear;
+    animation: checkmark 4s linear;
 }
 
 @keyframes checkmark {
     0% {
         opacity: 1;
     }
+
+    75% {
+        opacity: 1;
+    }
+
     100% {
         opacity: 0;
     }
