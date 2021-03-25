@@ -2,7 +2,7 @@ wordsApp = {};
 
 // curtain JS
 wordsApp.curtainRise = () => {
-    const curtain = document.querySelector(`.topCurtain`)
+    const curtain = document.querySelector(`.curtain`)
     curtain.addEventListener(`click`, () => {
         curtain.classList.add(`topCurtainRise`)
     })
