@@ -60,6 +60,20 @@ h2 {
 }
 
 /* checkmark styling */
+
+.checkmark i {
+    font-size: 300px;
+    color: green;
+}
+
+.checkmark p {
+    font-size: 2rem;
+    margin-top: 10px;
+    font-weight: bold;
+    color: green;
+}
+
 .checkmark {
-    margin: 0 auto;
+    text-align: center;
+    position: absolute;
 }
