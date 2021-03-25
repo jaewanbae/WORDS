@@ -6,7 +6,8 @@ html {
 }
 
 h1,
-h2 {
+h2,
+input[type=checkbox] {
     margin: 0;
     padding: 0;
 }
@@ -15,4 +16,41 @@ h2 {
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
+}
+
+/* Curtain Styling */
+.curtain {
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    position:absolute;
+}
+
+.topCurtain {
+    height: 100vh;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 2;
+}
+
+.topCurtainRise {
+    animation: rise 1s forwards ease-out;
+}
+
+@keyframes rise {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+.topCurtain:hover,
+.topCurtain:focus {
+    cursor: pointer;
 }
