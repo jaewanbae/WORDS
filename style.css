@@ -61,19 +61,22 @@ h2 {
 
 /* checkmark styling */
 
-.checkmark i {
+.checkmark i,
+.xMark i {
     font-size: 300px;
     color: green;
 }
 
-.checkmark p {
+.checkmark p,
+.xMark p {
     font-size: 2rem;
     margin-top: 10px;
     font-weight: bold;
     color: green;
 }
 
-.checkmark {
+.checkmark,
+.xMark {
     text-align: center;
     position: absolute;
     right: 42%;
