@@ -1,0 +1,18 @@
+/* General Styling */
+
+html {
+    font-size: 125%;
+    font-family: 'Mukta', sans-serif;
+}
+
+h1,
+h2 {
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
