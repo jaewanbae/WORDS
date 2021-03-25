@@ -47,6 +47,7 @@ h2 {
     position: absolute;
     left: 0;
     top: 0;
+    background-color: #F1E8D9;
 }
 
 .topCurtainRise {
@@ -104,6 +105,52 @@ input[type=text]:not(last-child) {
 }
 
 /* checkmark styling */
-.checkmark {
-    margin: 0 auto;
+
+.checkmark i,
+.xMark i {
+    font-size: 300px;
+}
+
+.checkmark i,
+.checkmark p {
+    color: green;
+}
+
+.checkmark p,
+.xMark p {
+    font-size: 2rem;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.xMark i,
+.xMark p {
+    color: red;
+}
+
+.checkmark,
+.xMark {
+    text-align: center;
+    position: absolute;
+    right: 42%;
+    top: 30%;
+    opacity: 0;
+}
+
+.checkmarkAnimation {
+    animation: checkmark 4s linear;
+}
+
+@keyframes checkmark {
+    0% {
+        opacity: 1;
+    }
+
+    75% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
 }
