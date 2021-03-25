@@ -64,6 +64,10 @@ h2 {
 .checkmark i,
 .xMark i {
     font-size: 300px;
+}
+
+.checkmark i,
+.checkmark p {
     color: green;
 }
 
@@ -72,7 +76,11 @@ h2 {
     font-size: 2rem;
     margin-top: 10px;
     font-weight: bold;
-    color: green;
+}
+
+.xMark i,
+.xMark p {
+    color: red;
 }
 
 .checkmark,
