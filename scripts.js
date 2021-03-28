@@ -18,7 +18,6 @@ wordsApp.getWord = () => {
         .then((jsonResponse) => {
             //check word length is less than 8
             if (jsonResponse[0].length <= 8) {                        
-                console.log(jsonResponse[0]);                        
                 wordsApp.getDef(jsonResponse[0]);
                 wordsApp.getBoxes(jsonResponse[0].length);
             } else {
@@ -47,10 +46,11 @@ wordsApp.getDef = (randomWord) => {
             return response.json();
         })
         .then((jsonResponse) => {
-            //if no definition (undefined), get another word and its part of speech
+            //if no definition (undefined), get another word, if shortdef = true, console.log
             if (jsonResponse[0].shortdef) {
+                console.log(randomWord);                        
                 console.log(jsonResponse[0].shortdef[0]);
-                console.log(jsonResponse[0].fl);
+                // console.log(jsonResponse[0].fl);
             } else (wordsApp.getWord());
         })
 }
