@@ -19,16 +19,10 @@ wordsApp.getWord = () => {
             //check word length is less than 8
             if (jsonResponse[0].length <= 8) {                        
                 wordsApp.getDef(jsonResponse[0]);
-                wordsApp.getBoxes(jsonResponse[0].length);
             } else {
                 wordsApp.getWord();
             }
         })
-}
-
-//get number of boxes per word length
-wordsApp.getBoxes = (numOfBoxes) => {
-    console.log(numOfBoxes);
 }
 
 //get random word definition
@@ -46,13 +40,21 @@ wordsApp.getDef = (randomWord) => {
             return response.json();
         })
         .then((jsonResponse) => {
-            //if no definition (undefined), get another word, if shortdef = true, console.log
-            if (jsonResponse[0].shortdef) {
-                console.log(randomWord);                        
-                console.log(jsonResponse[0].shortdef[0]);
-                // console.log(jsonResponse[0].fl);
-            } else (wordsApp.getWord());
-        })
+            console.log(randomWord);
+            //if word is in dictionary and has short definition, console.log
+            console.log(jsonResponse[0].shortdef[0]);
+            //then get word length
+            wordsApp.getBoxes(randomWord.length);
+            // console.log(jsonResponse[0].fl);
+            // if cors array (word isn't in dictionary) or word has no short definition, get another word 
+            }).catch ((error) => {
+                wordsApp.getWord();
+            })
+}
+
+//get number of boxes per word length
+wordsApp.getBoxes = (numOfBoxes) => {
+    console.log(numOfBoxes);
 }
 
 wordsApp.init = () => {
