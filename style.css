@@ -95,6 +95,14 @@ h2 {
     justify-content: center;
 }
 
+.letter {
+    display: none;
+}
+
+.letter.inPlay {
+    display: block;
+}
+
 input[type=text], .answerSubmit {
     border-radius: 12px;
     width: 60px;
