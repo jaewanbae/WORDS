@@ -1,5 +1,10 @@
 wordsApp = {};
 
+wordsApp.init = () => {
+    // wordsApp.curtainRise();
+    wordsApp.getWord();
+}
+
 // curtain JS
 // wordsApp.curtainRise = () => {
 //     const curtain = document.querySelector(`.curtain`)
@@ -11,6 +16,7 @@ wordsApp = {};
 //get random word
 wordsApp.getWord = () => {
     wordsApp.randomWordApiUrl = "https://random-word-api.herokuapp.com/word?number=1";
+
     fetch(wordsApp.randomWordApiUrl)
         .then((response) => {
             return response.json();
@@ -18,7 +24,7 @@ wordsApp.getWord = () => {
         .then((jsonResponse) => {
             //check word length is less than 8
             if (jsonResponse[0].length <= 8) {                        
-                wordsApp.getDef(jsonResponse[0]);
+                wordsApp.checkDef(jsonResponse[0]);
             } else {
                 wordsApp.getWord();
             }
@@ -26,7 +32,7 @@ wordsApp.getWord = () => {
 }
 
 //get random word with definition
-wordsApp.getDef = (randomWord) => {    
+wordsApp.checkDef = (randomWord) => {    
     merriamApiUrl = `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${randomWord}`;
     merriamApiKey = "10c2ccc6-00e7-4a3e-907d-d70bbfbacb4b";
     const url = new URL(merriamApiUrl);
@@ -40,15 +46,14 @@ wordsApp.getDef = (randomWord) => {
             return response.json();
         })
         .then((jsonResponse) => {
-            // //console.log word given by first api
-            // console.log(randomWord);
             //call hintOne() assuming word is in dictionary and has short definition 
             wordsApp.giveHintOne(jsonResponse[0].shortdef[0]);
             //then get word length
             wordsApp.getLetterBoxes(randomWord.length);
+            // jsonResponse[0].fl -- hint for part of speech
+            wordsApp.checkAnswer(randomWord);
             console.log(randomWord);
-            // console.log(jsonResponse[0].fl); -- hint for part of speech
-            // if cors array (word isn't in dictionary) or word has no short definition, get another word 
+            // if return cors (word isn't in dictionary) or word has no short definition, get another word 
             }).catch ((error) => {
                 wordsApp.getWord();
             })
@@ -70,9 +75,32 @@ wordsApp.getLetterBoxes = (numOfBoxes) => {
       }      
 }
 
-wordsApp.init = () => {
-    // wordsApp.curtainRise();
-    wordsApp.getWord();
+//get input and match with randomWord 
+wordsApp.checkAnswer = (answer) => {
+    const submitted = document.querySelector('.answerSubmit');
+    //clear any input from earlier attempts
+    const inputField = document.querySelectorAll('input[type=text]');
+    inputField.forEach(letter => {
+        letter.value="";
+    });
+    submitted.addEventListener('click', function() {
+        const letter1 = document.querySelector('#letter1').value;
+        const letter2 = document.querySelector('#letter2').value;
+        const letter3 = document.querySelector('#letter3').value;
+        const letter4 = document.querySelector('#letter4').value;
+        const letter5 = document.querySelector('#letter5').value;
+        const letter6 = document.querySelector('#letter6').value;
+        const letter7 = document.querySelector('#letter7').value;
+        const letter8 = document.querySelector('#letter8').value;
+        const wordSubmitted = `${letter1}${letter2}${letter3}${letter4}${letter5}${letter6}${letter7}${letter8}`;
+        const lowerCaseWord = wordSubmitted.toLowerCase();
+        if (lowerCaseWord == answer) {
+            console.log('yay');
+        } else {
+            console.log(`nope`);
+        }
+    });
 }
+
 
 wordsApp.init();
