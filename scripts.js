@@ -23,7 +23,7 @@ wordsApp.getWord = () => {
         })
         .then((jsonResponse) => {
             //check word length is less than 8
-            if (jsonResponse[0].length <= 8) {                        
+            if (jsonResponse[0].length <= 7) {                        
                 wordsApp.checkDef(jsonResponse[0]);
             } else {
                 wordsApp.getWord();
@@ -70,6 +70,9 @@ wordsApp.getLetterBoxes = (numOfBoxes) => {
     const letterBoxes = document.querySelectorAll('.letter');
     const letterBoxesArray = Array.from(letterBoxes);
     const letterBoxesInPlay = letterBoxesArray.slice(0, numOfBoxes);
+    for (let letterBox of letterBoxesArray) {
+        letterBox.classList.remove("inPlay");
+      }  
     for (let letterBox of letterBoxesInPlay) {
         letterBox.classList.add("inPlay");
       }      
