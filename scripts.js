@@ -75,8 +75,17 @@ wordsApp.getLetterBoxes = (numOfBoxes) => {
       }  
     for (let letterBox of letterBoxesInPlay) {
         letterBox.classList.add("inPlay");
-      }      
+      }     
+    //   wordsApp.nextLetter(letterBoxesInPlay); 
 }
+
+//automatically tab to next letter {
+    //wordsApp.nextLetter(letterInput)
+    //event listener to focused input
+    //check if input value length is equal to max length
+    //onkeyup event
+    //this. focus next 
+// }
 
 //get input and match with randomWord 
 wordsApp.checkAnswer = (answer) => {
@@ -98,9 +107,11 @@ wordsApp.checkAnswer = (answer) => {
         const wordSubmitted = `${letter1}${letter2}${letter3}${letter4}${letter5}${letter6}${letter7}${letter8}`;
         const lowerCaseWord = wordSubmitted.toLowerCase();
         if (lowerCaseWord == answer) {
-            console.log('yay');
+            const gotIt = document.querySelector('.checkmark');
+            gotIt.classList.add("feedbackAnimation");
         } else {
-            console.log(`nope`);
+            const tryAgain = document.querySelector('.xMark');
+            tryAgain.classList.add("feedbackAnimation");
         }
     });
 }

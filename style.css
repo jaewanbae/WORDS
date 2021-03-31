@@ -124,6 +124,17 @@ input[type=text]:not(last-child) {
 
 /* checkmark styling */
 
+.feedback {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: -100%;
+    opacity: 0;
+}
 
 .checkmark i,
 .xMark i {
@@ -138,8 +149,9 @@ input[type=text]:not(last-child) {
 .checkmark p,
 .xMark p {
     font-size: 2rem;
-    margin-top: 10px;
     font-weight: bold;
+    width: 100%;
+    text-align: center;
 }
 
 .xMark i,
@@ -147,30 +159,24 @@ input[type=text]:not(last-child) {
     color: red;
 }
 
-.checkmark,
-.xMark {
-    text-align: center;
-    position: absolute;
-    right: 42%;
-    top: 30%;
-    opacity: 0;
+.feedbackAnimation {
+    animation: feedback 4s linear;
 }
 
-.checkmarkAnimation {
-    animation: checkmark 4s linear;
-}
-
-@keyframes checkmark {
+@keyframes feedback {
     0% {
         opacity: 1;
+        top: 0%;
     }
 
     75% {
         opacity: 1;
+        top: 0%;
     }
 
     100% {
         opacity: 0;
+        top: 00%;
     }
 }
 
