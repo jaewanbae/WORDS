@@ -3,6 +3,7 @@ wordsApp = {};
 wordsApp.init = () => {
     // wordsApp.curtainRise();
     wordsApp.getWord();
+    wordsApp.nextWord();
 }
 
 // curtain JS
@@ -81,9 +82,7 @@ wordsApp.getLetterBoxes = (numOfBoxes) => {
 
 //automatically tab to next letter {
     //wordsApp.nextLetter(letterInput)
-    //event listener to focused input
     //check if input value length is equal to max length
-    //onkeyup event
     //this. focus next 
 // }
 
@@ -109,10 +108,22 @@ wordsApp.checkAnswer = (answer) => {
         if (lowerCaseWord == answer) {
             const gotIt = document.querySelector('.checkmark');
             gotIt.classList.add("feedbackAnimation");
+            console.log(wordSubmitted, typeof wordSubmitted, wordSubmitted.length, lowerCaseWord, typeof lowerCaseWord, lowerCaseWord.length);
+            console.log("yay!");
         } else {
             const tryAgain = document.querySelector('.xMark');
             tryAgain.classList.add("feedbackAnimation");
+            console.log(wordSubmitted, typeof wordSubmitted, wordSubmitted.length, lowerCaseWord, typeof lowerCaseWord, lowerCaseWord.length);
+            console.log("nope");
         }
+    });
+}
+
+wordsApp.nextWord = () => {
+    const nextWord = document.querySelector('.nextWord');
+    nextWord.addEventListener('click', function() {
+        wordsApp.init();
+        console.log("next word please");
     });
 }
 

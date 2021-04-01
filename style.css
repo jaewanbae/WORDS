@@ -176,7 +176,7 @@ input[type=text]:not(last-child) {
 
     100% {
         opacity: 0;
-        top: 00%;
+        top: -100%;
     }
 }
 
