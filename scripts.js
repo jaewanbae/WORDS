@@ -37,7 +37,7 @@ wordsApp.getWord = () => {
 wordsApp.checkDef = (randomWord) => {    
     merriamApiUrl = `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${randomWord}`;
     merriamApiKey = "10c2ccc6-00e7-4a3e-907d-d70bbfbacb4b";
-    let url = new URL(merriamApiUrl);
+    const url = new URL(merriamApiUrl);
     
     url.search = new URLSearchParams({
         key: merriamApiKey
@@ -64,15 +64,15 @@ wordsApp.checkDef = (randomWord) => {
 
 //give hint one
 wordsApp.giveHintOne = (hintOne) => {
-    let definition = document.querySelector('.definition');
+    const definition = document.querySelector('.definition');
     definition.innerText = `${hintOne}`;
 }
 
 //get number of boxes per word length
 wordsApp.getLetterBoxes = (numOfBoxes) => {
-    let letterBoxes = document.querySelectorAll('.letter');
-    let letterBoxesArray = Array.from(letterBoxes);
-    let letterBoxesInPlay = letterBoxesArray.slice(0, numOfBoxes);
+    const letterBoxes = document.querySelectorAll('.letter');
+    const letterBoxesArray = Array.from(letterBoxes);
+    const letterBoxesInPlay = letterBoxesArray.slice(0, numOfBoxes);
     for (let letterBox of letterBoxesArray) {
         letterBox.classList.remove("inPlay");
       }  
@@ -90,23 +90,23 @@ wordsApp.getLetterBoxes = (numOfBoxes) => {
 
 //get input 
 wordsApp.getAnswer = () => {
-    let submitted = document.querySelector('.answerSubmit');
+    const submitted = document.querySelector('.answerSubmit');
     //clear any input from earlier attempts
-    let inputField = document.querySelectorAll('input[type=text]');
+    const inputField = document.querySelectorAll('input[type=text]');
     inputField.forEach(letter => {
         letter.value="";
     });
 
     submitted.addEventListener('click', function() {
-        let letter1 = document.querySelector('#letter1').value;
-        let letter2 = document.querySelector('#letter2').value;
-        let letter3 = document.querySelector('#letter3').value;
-        let letter4 = document.querySelector('#letter4').value;
-        let letter5 = document.querySelector('#letter5').value;
-        let letter6 = document.querySelector('#letter6').value;
-        let letter7 = document.querySelector('#letter7').value;
-        let letter8 = document.querySelector('#letter8').value;
-        let wordSubmitted = `${letter1}${letter2}${letter3}${letter4}${letter5}${letter6}${letter7}${letter8}`;
+        const letter1 = document.querySelector('#letter1').value;
+        const letter2 = document.querySelector('#letter2').value;
+        const letter3 = document.querySelector('#letter3').value;
+        const letter4 = document.querySelector('#letter4').value;
+        const letter5 = document.querySelector('#letter5').value;
+        const letter6 = document.querySelector('#letter6').value;
+        const letter7 = document.querySelector('#letter7').value;
+        const letter8 = document.querySelector('#letter8').value;
+        const wordSubmitted = `${letter1}${letter2}${letter3}${letter4}${letter5}${letter6}${letter7}${letter8}`;
         wordsApp.finalAnswer = wordSubmitted.toLowerCase();
         wordsApp.checkAnswer();     
     });
@@ -118,19 +118,17 @@ wordsApp.checkAnswer = () => {
 
     if (wordsApp.finalAnswer === wordsApp.answer) {
             wordsApp.gotIt.classList.add("feedbackAnimation");
-            console.log(wordsApp.finalAnswer, wordsApp.answer);
-            console.log("yay!");            
+            console.log(wordsApp.finalAnswer, wordsApp.answer);        
     } else {
         wordsApp.tryAgain.classList.add("feedbackAnimation");
         console.log(wordsApp.finalAnswer, wordsApp.answer);
-        console.log("nope");
     }
       
     wordsApp.nextWord();   
 }
 
 wordsApp.nextWord = () => {
-    let nextWord = document.querySelector('.nextWord');
+    const nextWord = document.querySelector('.nextWord');
     nextWord.addEventListener('click', function() {
         wordsApp.init();
         console.log("next word please");
