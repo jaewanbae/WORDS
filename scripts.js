@@ -2,8 +2,9 @@ wordsApp = {};
 
 wordsApp.init = () => {
     // wordsApp.curtainRise();
+    wordsApp.finalAnswer = "";
+    wordsApp.answer = "";
     wordsApp.getWord();
-    wordsApp.nextWord();
 }
 
 // curtain JS
@@ -49,11 +50,12 @@ wordsApp.checkDef = (randomWord) => {
         .then((jsonResponse) => {
             //call hintOne() assuming word is in dictionary and has short definition 
             wordsApp.giveHintOne(jsonResponse[0].shortdef[0]);
+            wordsApp.answer = randomWord;
+            console.log(randomWord);
             //then get word length
             wordsApp.getLetterBoxes(randomWord.length);
             // jsonResponse[0].fl -- hint for part of speech
-            wordsApp.checkAnswer(randomWord);
-            console.log(randomWord);
+            wordsApp.getAnswer();
             // if return cors (word isn't in dictionary) or word has no short definition, get another word 
             }).catch ((error) => {
                 wordsApp.getWord();
@@ -80,20 +82,21 @@ wordsApp.getLetterBoxes = (numOfBoxes) => {
     //   wordsApp.nextLetter(letterBoxesInPlay); 
 }
 
-//automatically tab to next letter {
-    //wordsApp.nextLetter(letterInput)
-    //check if input value length is equal to max length
-    //this. focus next 
+// automatically tab to next letter {
+//     wordsApp.nextLetter(letterInput) {
+//     // check if input value length is equal to max length
+//     // this. focus next 
 // }
 
-//get input and match with randomWord 
-wordsApp.checkAnswer = (answer) => {
+//get input 
+wordsApp.getAnswer = () => {
     let submitted = document.querySelector('.answerSubmit');
     //clear any input from earlier attempts
     let inputField = document.querySelectorAll('input[type=text]');
     inputField.forEach(letter => {
         letter.value="";
     });
+
     submitted.addEventListener('click', function() {
         let letter1 = document.querySelector('#letter1').value;
         let letter2 = document.querySelector('#letter2').value;
@@ -104,24 +107,26 @@ wordsApp.checkAnswer = (answer) => {
         let letter7 = document.querySelector('#letter7').value;
         let letter8 = document.querySelector('#letter8').value;
         let wordSubmitted = `${letter1}${letter2}${letter3}${letter4}${letter5}${letter6}${letter7}${letter8}`;
-        let lowerCaseWord = wordSubmitted.toLowerCase();
-        console.log(108, wordSubmitted, typeof wordSubmitted, wordSubmitted.length, lowerCaseWord, typeof lowerCaseWord, lowerCaseWord.length, answer, typeof answer, answer.length);
-        if (lowerCaseWord == answer) {
-            let gotIt = document.querySelector('.checkmark');
-            gotIt.classList.add("feedbackAnimation");
-            console.log(wordSubmitted, typeof wordSubmitted, wordSubmitted.length, lowerCaseWord, typeof lowerCaseWord, lowerCaseWord.length, answer, typeof answer, answer.length);
-            console.log("yay!");            
-        } else {
-            let tryAgain = document.querySelector('.xMark');
-            tryAgain.classList.add("feedbackAnimation");
-            console.log(wordSubmitted, typeof wordSubmitted, wordSubmitted.length, lowerCaseWord, typeof lowerCaseWord, lowerCaseWord.length, answer, typeof answer, answer.length);
-            console.log("nope");
-        }        
-        wordSubmitted = "";
-        lowerCaseWord = "";
-        answer = "";
-        console.log("cleared 123", wordSubmitted, typeof wordSubmitted, wordSubmitted.length, lowerCaseWord, typeof lowerCaseWord, lowerCaseWord.length, answer, typeof answer, answer.length);
+        wordsApp.finalAnswer = wordSubmitted.toLowerCase();
+        wordsApp.checkAnswer();     
     });
+}
+
+wordsApp.checkAnswer = () => {
+    wordsApp.gotIt = document.querySelector('.checkmark');
+    wordsApp.tryAgain = document.querySelector('.xMark');
+
+    if (wordsApp.finalAnswer === wordsApp.answer) {
+            wordsApp.gotIt.classList.add("feedbackAnimation");
+            console.log(wordsApp.finalAnswer, wordsApp.answer);
+            console.log("yay!");            
+    } else {
+        wordsApp.tryAgain.classList.add("feedbackAnimation");
+        console.log(wordsApp.finalAnswer, wordsApp.answer);
+        console.log("nope");
+    }
+      
+    wordsApp.nextWord();   
 }
 
 wordsApp.nextWord = () => {
@@ -129,6 +134,8 @@ wordsApp.nextWord = () => {
     nextWord.addEventListener('click', function() {
         wordsApp.init();
         console.log("next word please");
+        wordsApp.gotIt.classList.remove("feedbackAnimation");
+        wordsApp.tryAgain.classList.remove("feedbackAnimation");
     });
 }
 
