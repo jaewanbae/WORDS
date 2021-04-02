@@ -82,18 +82,12 @@ wordsApp.getLetterBoxes = (numOfBoxes) => {
     //   wordsApp.nextLetter(letterBoxesInPlay); 
 }
 
-// automatically tab to next letter {
-//     wordsApp.nextLetter(letterInput) {
-//     // check if input value length is equal to max length
-//     // this. focus next 
-// }
-
 //get input 
 wordsApp.getAnswer = () => {
     const submitted = document.querySelector('.answerSubmit');
-    //clear any input from earlier attempts
     const inputField = document.querySelectorAll('input[type=text]');
     inputField.forEach(letter => {
+        //clear any input from earlier attempts
         letter.value="";
         //automatically tab to next empty box if letter is entered
         letter.addEventListener('input', function() {
