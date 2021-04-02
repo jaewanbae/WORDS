@@ -95,6 +95,14 @@ wordsApp.getAnswer = () => {
     const inputField = document.querySelectorAll('input[type=text]');
     inputField.forEach(letter => {
         letter.value="";
+        //automatically tab to next empty box if letter is entered
+        letter.addEventListener('input', function() {
+            if (this.value.length === 1) {
+                let parent = this.parentElement;
+                let nextParent = parent.nextElementSibling;
+                nextParent.querySelector('input[type=text]').focus();
+            }
+        });
     });
 
     submitted.addEventListener('click', function() {
