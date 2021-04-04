@@ -52,7 +52,6 @@ section {
     font-size: 2rem;
 }
 .answerContainer {
-    width: 66%;
     margin: 60px auto;
     display: flex;
     flex-direction: column;
@@ -202,4 +201,10 @@ footer {
     100% {
         opacity: 1;
     }
+}
+
+@media (min-width: 650px) {
+    .answerContainer {
+        width: 66%;
+    };
 }

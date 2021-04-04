@@ -7,6 +7,7 @@ wordsApp.init = () => {
     wordsApp.getWord();
     wordsApp.autoTab();
     wordsApp.getAnswer();
+    wordsApp.decideLength();
 }
 
 //get random word
@@ -102,6 +103,13 @@ wordsApp.getLetterBoxes = (numOfBoxes) => {
       }     
 }
 
+wordsApp.decideLength = () => {
+    const mobile = window.matchMedia("(max-width: 600px)");
+    if (mobile.matches) { // If media query matches
+        console.log("turn to landscape for a better experience");
+    }
+}
+
 
 //get input 
 wordsApp.getAnswer = () => {
@@ -113,7 +121,7 @@ wordsApp.getAnswer = () => {
             submitted.click();
         } 
     })
-    
+
     submitted.addEventListener('click', function() {
         const letter1 = document.querySelector('#letter1').value;
         const letter2 = document.querySelector('#letter2').value;
