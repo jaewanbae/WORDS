@@ -58,9 +58,26 @@ wordsApp.checkDef = (randomWord) => {
 
 //check random word length per media query
 wordsApp.decideLength = () => {
-    const mobile = window.matchMedia("(max-width: 600px)");
+    const mobile = window.matchMedia("(max-width: 650px)");
+    const mainElement = document.querySelector("main");
     if (mobile.matches) { // If media query matches
         console.log("turn to landscape for a better experience");
+        const container = document.createElement('div');
+        const messageContainer = document.createElement('div');
+        const message = document.createElement('p');
+        const icon = document.createElement('i');
+        message.textContent = `Please turn your device to landscape view for the best experience!`
+        icon.classList.add(`fas`);
+        icon.classList.add(`fa-times`);
+        container.classList.add('messageContainer');
+        messageContainer.classList.add('landscapeMessage');
+        messageContainer.appendChild(message);
+        messageContainer.appendChild(icon)
+        container.appendChild(messageContainer);
+        mainElement.appendChild(container);
+        icon.addEventListener('click', () => {
+            container.remove();
+        })
     }
 }
 
@@ -110,15 +127,6 @@ wordsApp.getLetterBoxes = (numOfBoxes) => {
         letterBox.classList.add("inPlay");
       }     
 }
-
-//window width msg
-wordsApp.decideLength = () => {
-    const mobile = window.matchMedia("(max-width: 600px)");
-    if (mobile.matches) { // If media query matches
-        console.log("turn to landscape for a better experience");
-    }
-}
-
 
 //get input 
 wordsApp.getAnswer = () => {
