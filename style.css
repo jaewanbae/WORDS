@@ -24,17 +24,18 @@ h2 {
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
+    text-align: center;
 }
 
 header {
-    height: 20vh;
     background-color: bisque;
     text-align: center;
 }
 
 h1 {
-    padding-top: 50px;
+    padding: 1.5rem 0;
     font-weight: 700;
+    font-size: 2rem;
 }
 
 section {
@@ -42,17 +43,12 @@ section {
 }
 
 /*text container*/
-.wrapper {
-    width: 66%;
-    margin: 0 auto;
-    text-align: center;
-}
 
 .hintTitle {
     font-size: 2rem;
 }
 .answerContainer {
-    margin: 60px auto;
+    margin: 2rem auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -92,7 +88,7 @@ input[type=text]:not(last-child) {
 
 .answerSubmit {
     width: 120px;
-    margin-top: 60px;
+    margin-top: 2rem;
 }
 
 .nextWord {
@@ -128,7 +124,7 @@ input[type=text]:not(last-child) {
 
 .checkmark i,
 .xMark i {
-    font-size: 300px;
+    font-size: 9rem;
 }
 
 .checkmark i,
@@ -174,14 +170,17 @@ input[type=text]:not(last-child) {
 footer p {
     text-align: center;
     font-weight: 700;
+    margin: 0;
+    padding: 1rem;
+    display: block;
 }
 
 footer {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    left: 0;
     background-color: bisque;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
 }
 
 /* blinking message */
@@ -204,7 +203,7 @@ footer {
 }
 
 @media (min-width: 650px) {
-    .answerContainer {
+    .wrapper {
         width: 66%;
     };
 }
