@@ -43,7 +43,6 @@ section {
 
 /*text container*/
 .wrapper {
-    width: 66%;
     margin: 0 auto;
     text-align: center;
 }
@@ -202,3 +201,6 @@ footer {
         opacity: 1;
     }
 }
+
+
+/* media queries */

@@ -7,6 +7,7 @@ wordsApp.init = () => {
     wordsApp.getWord();
     wordsApp.autoTab();
     wordsApp.getAnswer();
+    wordsApp.decideLength();
 }
 
 //get random word
@@ -53,6 +54,14 @@ wordsApp.checkDef = (randomWord) => {
             }).catch ((error) => {
                 wordsApp.getWord();
             })
+}
+
+//check random word length per media query
+wordsApp.decideLength = () => {
+    const mobile = window.matchMedia("(max-width: 600px)");
+    if (mobile.matches) { // If media query matches
+        console.log("turn to landscape for a better experience");
+    }
 }
 
 // Auto Tab function
