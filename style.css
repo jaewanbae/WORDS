@@ -24,35 +24,31 @@ h2 {
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
+    text-align: center;
 }
 
 header {
-    height: 20vh;
     background-color: bisque;
     text-align: center;
 }
 
 h1 {
-    padding-top: 50px;
+    padding: 1.5rem 0;
     font-weight: 700;
+    font-size: 2rem;
 }
 
 section {
-    margin-top: 80px;
+    margin-top: 130px;
 }
 
 /*text container*/
-.wrapper {
-    margin: 0 auto;
-    text-align: center;
-}
 
 .hintTitle {
     font-size: 2rem;
 }
 .answerContainer {
-    width: 66%;
-    margin: 60px auto;
+    margin: 2rem auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -62,6 +58,7 @@ section {
 .letterContainer {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .letter {
@@ -91,7 +88,7 @@ input[type=text]:not(last-child) {
 
 .answerSubmit {
     width: 120px;
-    margin-top: 60px;
+    margin-top: 2rem;
 }
 
 .nextWord {
@@ -127,7 +124,7 @@ input[type=text]:not(last-child) {
 
 .checkmark i,
 .xMark i {
-    font-size: 300px;
+    font-size: 9rem;
 }
 
 .checkmark i,
@@ -173,14 +170,20 @@ input[type=text]:not(last-child) {
 footer p {
     text-align: center;
     font-weight: 700;
+    margin: 0;
+    padding: 1rem;
+    display: block;
 }
 
 footer {
+    background-color: bisque;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
     bottom: 0;
     right: 0;
     left: 0;
-    background-color: bisque;
 }
 
 /* blinking message */
@@ -202,5 +205,8 @@ footer {
     }
 }
 
-
-/* media queries */
+@media (min-width: 650px) {
+    .wrapper {
+        width: 66%;
+    };
+}

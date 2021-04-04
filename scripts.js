@@ -100,7 +100,6 @@ wordsApp.giveHintOne = (hintOne) => {
 wordsApp.getLetterBoxes = (numOfBoxes) => {
     const letterBoxes = document.querySelectorAll('.letter');
     const letterBoxesArray = Array.from(letterBoxes);
-    console.log(letterBoxesArray)
     const letterBoxesInPlay = letterBoxesArray.slice(0, numOfBoxes);
     for (let letterBox of letterBoxesArray) {
         letterBox.children[1].value = "";
@@ -112,10 +111,27 @@ wordsApp.getLetterBoxes = (numOfBoxes) => {
       }     
 }
 
+//window width msg
+wordsApp.decideLength = () => {
+    const mobile = window.matchMedia("(max-width: 600px)");
+    if (mobile.matches) { // If media query matches
+        console.log("turn to landscape for a better experience");
+    }
+}
+
 
 //get input 
 wordsApp.getAnswer = () => {
     const submitted = document.querySelector('.answerSubmit');
+    wordsApp.submitCount =  0;
+
+    const gameStage = document.querySelector('main');
+    gameStage.addEventListener ('keydown', function(e) {
+        if (e.key === "Enter") {
+            submitted.click();
+        } 
+    })
+
     submitted.addEventListener('click', function() {
         const letter1 = document.querySelector('#letter1').value;
         const letter2 = document.querySelector('#letter2').value;
@@ -127,14 +143,16 @@ wordsApp.getAnswer = () => {
         const letter8 = document.querySelector('#letter8').value;
         const wordSubmitted = `${letter1}${letter2}${letter3}${letter4}${letter5}${letter6}${letter7}${letter8}`;
         wordsApp.finalAnswer = wordSubmitted.toLowerCase();
-        wordsApp.checkAnswer();     
-    });
+        wordsApp.checkAnswer();   
+    });   
 }
 
 wordsApp.checkAnswer = () => {
     if (wordsApp.finalAnswer === wordsApp.answer) {
         wordsApp.gotIt.classList.add("feedbackAnimation");        
     } else {
+        wordsApp.tryAgain.classList.remove("feedbackAnimation");
+        void wordsApp.tryAgain.offsetWidth;
         wordsApp.tryAgain.classList.add("feedbackAnimation");
     }
 }
@@ -148,8 +166,8 @@ wordsApp.nextWord = () => {
         wordsApp.getWord();
         wordsApp.gotIt.classList.remove("feedbackAnimation");
         wordsApp.tryAgain.classList.remove("feedbackAnimation");
-        definition.classList.add(`blinking`)
-        definition.textContent = `Generating Hint`
+        definition.classList.add(`blinking`);
+        definition.textContent = `Generating Hint`;
     });
 }
 
