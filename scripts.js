@@ -59,13 +59,14 @@ wordsApp.checkDef = (randomWord) => {
 wordsApp.giveHintOne = (hintOne) => {
     const definition = document.querySelector('.definition');
     definition.classList.remove(`blinking`)
-    definition.textContent = `Hint: ${hintOne}`;
+    definition.textContent = `${hintOne}`;
 }
 
 //get number of boxes per word length
 wordsApp.getLetterBoxes = (numOfBoxes) => {
     const letterBoxes = document.querySelectorAll('.letter');
     const letterBoxesArray = Array.from(letterBoxes);
+    console.log(letterBoxesArray)
     const letterBoxesInPlay = letterBoxesArray.slice(0, numOfBoxes);
     for (let letterBox of letterBoxesArray) {
         letterBox.children[1].value = "";
@@ -75,7 +76,6 @@ wordsApp.getLetterBoxes = (numOfBoxes) => {
         letterBox.children[1].value = "";
         letterBox.classList.add("inPlay");
       }     
-    //   wordsApp.nextLetter(letterBoxesInPlay); 
 }
 
 
