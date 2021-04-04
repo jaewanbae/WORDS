@@ -91,7 +91,6 @@ wordsApp.giveHintOne = (hintOne) => {
 wordsApp.getLetterBoxes = (numOfBoxes) => {
     const letterBoxes = document.querySelectorAll('.letter');
     const letterBoxesArray = Array.from(letterBoxes);
-    console.log(letterBoxesArray)
     const letterBoxesInPlay = letterBoxesArray.slice(0, numOfBoxes);
     for (let letterBox of letterBoxesArray) {
         letterBox.children[1].value = "";
@@ -107,6 +106,14 @@ wordsApp.getLetterBoxes = (numOfBoxes) => {
 //get input 
 wordsApp.getAnswer = () => {
     const submitted = document.querySelector('.answerSubmit');
+
+    const gameStage = document.querySelector('main');
+    gameStage.addEventListener ('keydown', function(e) {
+        if (e.key === "Enter") {
+            submitted.click();
+        } 
+    })
+    
     submitted.addEventListener('click', function() {
         const letter1 = document.querySelector('#letter1').value;
         const letter2 = document.querySelector('#letter2').value;
@@ -119,7 +126,7 @@ wordsApp.getAnswer = () => {
         const wordSubmitted = `${letter1}${letter2}${letter3}${letter4}${letter5}${letter6}${letter7}${letter8}`;
         wordsApp.finalAnswer = wordSubmitted.toLowerCase();
         wordsApp.checkAnswer();     
-    });
+    });    
 }
 
 wordsApp.checkAnswer = () => {
