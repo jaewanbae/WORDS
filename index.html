@@ -10,72 +10,67 @@
     <script src="https://kit.fontawesome.com/7f26b08e3d.js" crossorigin="anonymous"></script>
     <title>Let's play WORDS</title>
 </head>
-<body>
-    <div class="curtain">
-        <div class="topCurtain">
-            <p>Let's play</p>
-            <h1>WORDS</h1>
-        </div>
-    </div>
-    <div class="checkmark">
-        <i class="far fa-check-circle"></i>
-        <p>Correct!</p>
-    </div>
-    <div class="xMark">
-        <i class="far fa-times-circle"></i>
-        <p>Try Again!</p>
-    </div>
-    <section>
+<body>    
+    <header class="wrapper">    
+        <h1>What word is this?</h1>
+    </header>
+    <main>
         <div class="wrapper">
             <div class="textContainer">
-                <h2>What word is this?</h2>
-                <p class="definition">Hint: SDFGKJSEFGKJSDFGKJSERFGKJSDf</p>
+                <p>Hint: <span class="definition"></span></p>
             </div>
-            <div class="answerContainer">
+            <fieldset class="answerContainer">
+                <legend class="sr-only">Enter the letters of the word you're thinking!</legend>
                 <div class="letterContainer">
                     <div class="letter">
                         <label for="letter1" name="letters" class="sr-only">1st letter</label>
-                        <input type="text" id="letter1" name="letters" maxlength="1">
+                        <input type="text" id="letter1" name="letters" maxlength="1" autocomplete="off">
                     </div>
                     <div class="letter">
                         <label for="letter2" name="letters" class="sr-only">2nd letter</label>
-                        <input type="text" id="letter2" name="letters" maxlength="1">
+                        <input type="text" id="letter2" name="letters" maxlength="1" autocomplete="off">
                     </div>
                     <div class="letter">
                         <label for="letter3" name="letters" class="sr-only">3rd letter</label>
-                        <input type="text" id="letter3" name="letters" maxlength="1">
+                        <input type="text" id="letter3" name="letters" maxlength="1" autocomplete="off">
                     </div>
                     <div class="letter">
                         <label for="letter4" name="letters" class="sr-only">4th letter</label>
-                        <input type="text" id="letter4" name="letters" maxlength="1">
+                        <input type="text" id="letter4" name="letters" maxlength="1" autocomplete="off">
                     </div>
                     <div class="letter">
                         <label for="letter5" name="letters" class="sr-only">5th letter</label>
-                        <input type="text" id="letter5" name="letters" maxlength="1">
+                        <input type="text" id="letter5" name="letters" maxlength="1" autocomplete="off">
                     </div>
                     <div class="letter">
                         <label for="letter6" name="letters" class="sr-only">6th letter</label>
-                        <input type="text" id="letter6" name="letters" maxlength="1">
+                        <input type="text" id="letter6" name="letters" maxlength="1" autocomplete="off">
                     </div>
                     <div class="letter">
                         <label for="letter7" name="letters" class="sr-only">7th letter</label>
-                        <input type="text" id="letter7" name="letters" maxlength="1">
+                        <input type="text" id="letter7" name="letters" maxlength="1" autocomplete="off">
                     </div>
                     <div class="letter">
                         <label for="letter8" name="letters" class="sr-only">8th letter</label>
-                        <input type="text" id="letter8" name="letters" maxlength="1">
+                        <input type="text" id="letter8" name="letters" maxlength="1" autocomplete="off">
                     </div>
-                    <!-- Answer input field -->
                 </div>
-                <button class="answerSubmit" name="letters">Right??</button>
-            </div>
+                <input type="submit" class="answerSubmit" name="letters" value="ENTER">
+            </fieldset>
+            <input type="submit" class="nextWord" value="NEXT">
+        </div>        
+        <div class="checkmark feedback">
+            <i class="far fa-check-circle"></i>
+            <p>Correct!</p>
         </div>
-    </section>
-
+        <div class="xMark feedback">
+            <i class="far fa-times-circle"></i>
+            <p>Try Again!</p>
+        </div>
+    </main>
     <footer>
         <p>Created at Juno College by Mandy Poon and Peter Bae</p>
     </footer>
-
     <script src="scripts.js"></script>
 </body>
 </html>
