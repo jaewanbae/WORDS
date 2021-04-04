@@ -103,6 +103,7 @@ wordsApp.getLetterBoxes = (numOfBoxes) => {
       }     
 }
 
+//window width msg
 wordsApp.decideLength = () => {
     const mobile = window.matchMedia("(max-width: 600px)");
     if (mobile.matches) { // If media query matches
@@ -114,6 +115,7 @@ wordsApp.decideLength = () => {
 //get input 
 wordsApp.getAnswer = () => {
     const submitted = document.querySelector('.answerSubmit');
+    wordsApp.submitCount =  0;
 
     const gameStage = document.querySelector('main');
     gameStage.addEventListener ('keydown', function(e) {
@@ -133,14 +135,16 @@ wordsApp.getAnswer = () => {
         const letter8 = document.querySelector('#letter8').value;
         const wordSubmitted = `${letter1}${letter2}${letter3}${letter4}${letter5}${letter6}${letter7}${letter8}`;
         wordsApp.finalAnswer = wordSubmitted.toLowerCase();
-        wordsApp.checkAnswer();     
-    });    
+        wordsApp.checkAnswer();   
+    });   
 }
 
 wordsApp.checkAnswer = () => {
     if (wordsApp.finalAnswer === wordsApp.answer) {
         wordsApp.gotIt.classList.add("feedbackAnimation");        
     } else {
+        wordsApp.tryAgain.classList.remove("feedbackAnimation");
+        void wordsApp.tryAgain.offsetWidth;
         wordsApp.tryAgain.classList.add("feedbackAnimation");
     }
 }
@@ -154,8 +158,8 @@ wordsApp.nextWord = () => {
         wordsApp.getWord();
         wordsApp.gotIt.classList.remove("feedbackAnimation");
         wordsApp.tryAgain.classList.remove("feedbackAnimation");
-        definition.classList.add(`blinking`)
-        definition.textContent = `Generating Hint`
+        definition.classList.add(`blinking`);
+        definition.textContent = `Generating Hint`;
     });
 }
 
