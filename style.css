@@ -124,7 +124,7 @@ input[type=text]:not(last-child) {
 
 .checkmark i,
 .xMark i {
-    font-size: 300px;
+    font-size: 9rem;
 }
 
 .checkmark i,
