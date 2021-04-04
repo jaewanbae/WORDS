@@ -58,7 +58,7 @@ wordsApp.checkDef = (randomWord) => {
 
 //check random word length per media query
 wordsApp.decideLength = () => {
-    const mobile = window.matchMedia("(max-width: 650px)");
+    const mobile = window.matchMedia("(max-width: 750px)");
     const mainElement = document.querySelector("main");
     if (mobile.matches) { // If media query matches
         console.log("turn to landscape for a better experience");
@@ -108,9 +108,12 @@ wordsApp.autoTab = () => {
 
 //give hint one
 wordsApp.giveHintOne = (hintOne) => {
-    const definition = document.querySelector('.definition');
-    definition.classList.remove(`blinking`)
-    definition.textContent = `${hintOne}`;
+    if (hintOne) {
+        const pElement = document.querySelector('.definition');
+        pElement.classList.remove(`blinking`)
+        pElement.textContent = `${hintOne}`;
+    }
+    
 }
 
 //get number of boxes per word length
