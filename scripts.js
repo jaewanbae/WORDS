@@ -61,7 +61,6 @@ wordsApp.decideLength = () => {
     const mobile = window.matchMedia("(max-width: 750px)");
     const mainElement = document.querySelector("main");
     if (mobile.matches) { // If media query matches
-        console.log("turn to landscape for a better experience");
         const container = document.createElement('div');
         const messageContainer = document.createElement('div');
         const message = document.createElement('p');
