@@ -1,2 +1,0 @@
-# WORDS
-WORDS game app
