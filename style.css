@@ -26,11 +26,29 @@ h2 {
     margin: 0 auto;
 }
 
+header {
+    height: 20vh;
+    background-color: bisque;
+    text-align: center;
+}
+
+h1 {
+    padding-top: 50px;
+}
+
+section {
+    margin-top: 130px;
+}
+
 /*text container*/
 .wrapper {
     width: 66%;
     margin: 0 auto;
     text-align: center;
+}
+
+.textContainer {
+    margin-top: 50px;
 }
 
 .answerContainer {
@@ -39,6 +57,7 @@ h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    border: none;
 }
 
 .letterContainer {
@@ -54,14 +73,17 @@ h2 {
     display: block;
 }
 
-input[type=text], .answerSubmit {
+input[type=text],
+.answerSubmit,
+.nextWord {
     border-radius: 12px;
     width: 60px;
     height: 60px;
     background-color: bisque;
     border: 2px solid #333;
     text-align: center;
-    box-shadow: inset 0 0 5px rgba(51, 51, 51, 0.732);
+    box-shadow: inset 0 0 5px rgba(51, 51, 51, 0.732),
+    0 5px rgba(51, 51, 51);
 }
 
 input[type=text]:not(last-child) {
@@ -72,6 +94,23 @@ input[type=text]:not(last-child) {
     width: 120px;
     margin-top: 60px;
 }
+
+.nextWord {
+    width: 120px;
+}
+
+.answerSubmit:hover,
+.answerSubmit:focus,
+.nextWord:hover,
+.nextWord:focus {
+    cursor: pointer;
+}
+
+.answerSubmit:active,
+.nextWord:active {
+    transform: translateY(3px);
+}
+
 
 /* checkmark styling */
 
@@ -120,8 +159,8 @@ input[type=text]:not(last-child) {
         top: 0%;
     }
 
-    75% {
-        opacity: 1;
+    50% {
+        opacity: 0;
         top: 0%;
     }
 
@@ -134,4 +173,32 @@ input[type=text]:not(last-child) {
 /* footer styles */
 footer p {
     text-align: center;
+    font-weight: 700;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: bisque;
+}
+
+/* blinking message */
+.blinking {
+    animation: blink 1s linear infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }

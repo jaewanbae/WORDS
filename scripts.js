@@ -1,4 +1,6 @@
 wordsApp = {};
+wordsApp.gotIt = document.querySelector('.checkmark');
+wordsApp.tryAgain = document.querySelector('.xMark');
 
 wordsApp.init = () => {
     wordsApp.nextWord();
@@ -56,7 +58,8 @@ wordsApp.checkDef = (randomWord) => {
 //give hint one
 wordsApp.giveHintOne = (hintOne) => {
     const definition = document.querySelector('.definition');
-    definition.innerText = `${hintOne}`;
+    definition.classList.remove(`blinking`)
+    definition.textContent = `Hint: ${hintOne}`;
 }
 
 //get number of boxes per word length
@@ -111,25 +114,24 @@ wordsApp.getAnswer = () => {
 }
 
 wordsApp.checkAnswer = () => {
-    wordsApp.gotIt = document.querySelector('.checkmark');
-    wordsApp.tryAgain = document.querySelector('.xMark');
-
     if (wordsApp.finalAnswer === wordsApp.answer) {
-            wordsApp.gotIt.classList.add("feedbackAnimation");        
+        wordsApp.gotIt.classList.add("feedbackAnimation");        
     } else {
         wordsApp.tryAgain.classList.add("feedbackAnimation");
     }
-      
 }
 
 wordsApp.nextWord = () => {
     const nextWord = document.querySelector('.nextWord');
+    const definition = document.querySelector('.definition');
     nextWord.addEventListener('click', function() {
         wordsApp.finalAnswer = "";
         wordsApp.answer = "";
         wordsApp.getWord();
         wordsApp.gotIt.classList.remove("feedbackAnimation");
         wordsApp.tryAgain.classList.remove("feedbackAnimation");
+        definition.classList.add(`blinking`)
+        definition.textContent = `Generating Hint`
     });
 }
 
