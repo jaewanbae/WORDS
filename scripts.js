@@ -1,19 +1,11 @@
 wordsApp = {};
 
 wordsApp.init = () => {
-    // wordsApp.curtainRise();
-    wordsApp.finalAnswer = "";
-    wordsApp.answer = "";
+    wordsApp.nextWord();
     wordsApp.getWord();
+    wordsApp.autoTab();
+    wordsApp.getAnswer();
 }
-
-// curtain JS
-// wordsApp.curtainRise = () => {
-//     let curtain = document.querySelector(`.curtain`)
-//     curtain.addEventListener(`click`, () => {
-//         curtain.classList.add(`topCurtainRise`)
-//     })
-// }
 
 //get random word
 wordsApp.getWord = () => {
@@ -55,7 +47,6 @@ wordsApp.checkDef = (randomWord) => {
             //then get word length
             wordsApp.getLetterBoxes(randomWord.length);
             // jsonResponse[0].fl -- hint for part of speech
-            wordsApp.getAnswer();
             // if return cors (word isn't in dictionary) or word has no short definition, get another word 
             }).catch ((error) => {
                 wordsApp.getWord();
@@ -74,21 +65,22 @@ wordsApp.getLetterBoxes = (numOfBoxes) => {
     const letterBoxesArray = Array.from(letterBoxes);
     const letterBoxesInPlay = letterBoxesArray.slice(0, numOfBoxes);
     for (let letterBox of letterBoxesArray) {
+        letterBox.children[1].value = "";
         letterBox.classList.remove("inPlay");
       }  
     for (let letterBox of letterBoxesInPlay) {
+        letterBox.children[1].value = "";
         letterBox.classList.add("inPlay");
       }     
     //   wordsApp.nextLetter(letterBoxesInPlay); 
 }
 
-//get input 
-wordsApp.getAnswer = () => {
-    const submitted = document.querySelector('.answerSubmit');
+
+// autotab function
+wordsApp.autoTab = () => {
     const inputField = document.querySelectorAll('input[type=text]');
     inputField.forEach(letter => {
         //clear any input from earlier attempts
-        letter.value="";
         //automatically tab to next empty box if letter is entered
         letter.addEventListener('input', function() {
             if (this.value.length === 1) {
@@ -98,7 +90,11 @@ wordsApp.getAnswer = () => {
             }
         });
     });
+}
 
+//get input 
+wordsApp.getAnswer = () => {
+    const submitted = document.querySelector('.answerSubmit');
     submitted.addEventListener('click', function() {
         const letter1 = document.querySelector('#letter1').value;
         const letter2 = document.querySelector('#letter2').value;
@@ -119,25 +115,22 @@ wordsApp.checkAnswer = () => {
     wordsApp.tryAgain = document.querySelector('.xMark');
 
     if (wordsApp.finalAnswer === wordsApp.answer) {
-            wordsApp.gotIt.classList.add("feedbackAnimation");
-            console.log(wordsApp.finalAnswer, wordsApp.answer);        
+            wordsApp.gotIt.classList.add("feedbackAnimation");        
     } else {
         wordsApp.tryAgain.classList.add("feedbackAnimation");
-        console.log(wordsApp.finalAnswer, wordsApp.answer);
     }
       
-    wordsApp.nextWord();   
 }
 
 wordsApp.nextWord = () => {
     const nextWord = document.querySelector('.nextWord');
     nextWord.addEventListener('click', function() {
-        wordsApp.init();
-        console.log("next word please");
+        wordsApp.finalAnswer = "";
+        wordsApp.answer = "";
+        wordsApp.getWord();
         wordsApp.gotIt.classList.remove("feedbackAnimation");
         wordsApp.tryAgain.classList.remove("feedbackAnimation");
     });
 }
-
 
 wordsApp.init();

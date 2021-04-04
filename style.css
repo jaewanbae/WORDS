@@ -26,55 +26,6 @@ h2 {
     margin: 0 auto;
 }
 
-/* Curtain Styling */
-.curtain {
-    height: 100vh;
-    width: 100%;
-    overflow: hidden;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-.topCurtain {
-    height: 100vh;
-    width: 100%;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    z-index: 2;
-    position: absolute;
-    left: 0;
-    top: 0;
-    background-color: #F1E8D9;
-}
-
-.topCurtain p {
-    font-size: 2rem;
-    margin-bottom: 20px;
-}
-
-.topCurtainRise {
-    animation: rise 1s forwards ease-out;
-}
-
-@keyframes rise {
-    0% {
-        transform: translateY(0);
-    }
-
-
-    100% {
-        transform: translateY(-100%);
-    }
-}
-
-.topCurtain:hover,
-.topCurtain:focus {
-    cursor: pointer;
-}
-
 /*text container*/
 .wrapper {
     width: 66%;
