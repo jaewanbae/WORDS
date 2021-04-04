@@ -55,6 +55,31 @@ wordsApp.checkDef = (randomWord) => {
             })
 }
 
+// Auto Tab function
+wordsApp.autoTab = () => {
+    const inputField = document.querySelectorAll('input[type=text]');
+    inputField.forEach(letter => {
+        let parent = letter.parentElement;
+        let nextParent = parent.nextElementSibling;
+        let prevParent =  parent.previousElementSibling;
+        //automatically tab to next empty box if letter is entered
+        letter.addEventListener('input', function() {
+            if (this.value.length === 1) {                
+                nextParent.querySelector('input[type=text]').focus();             
+            }
+        });
+        //automatically delete and move to previous box if backspace is pressed
+        letter.addEventListener('keyup', function(e) {
+            if (e.key === "ArrowLeft") {
+                prevParent.querySelector('input[type=text]').focus();
+            } 
+            if (e.key === "ArrowRight") {
+                nextParent.querySelector('input[type=text]').focus();
+            }
+        })
+    });
+}
+
 //give hint one
 wordsApp.giveHintOne = (hintOne) => {
     const definition = document.querySelector('.definition');
@@ -78,22 +103,6 @@ wordsApp.getLetterBoxes = (numOfBoxes) => {
       }     
 }
 
-
-// autotab function
-wordsApp.autoTab = () => {
-    const inputField = document.querySelectorAll('input[type=text]');
-    inputField.forEach(letter => {
-        //clear any input from earlier attempts
-        //automatically tab to next empty box if letter is entered
-        letter.addEventListener('input', function() {
-            if (this.value.length === 1) {
-                let parent = this.parentElement;
-                let nextParent = parent.nextElementSibling;
-                nextParent.querySelector('input[type=text]').focus();
-            }
-        });
-    });
-}
 
 //get input 
 wordsApp.getAnswer = () => {
