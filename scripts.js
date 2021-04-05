@@ -46,7 +46,6 @@ wordsApp.checkDef = (randomWord) => {
             //call hintOne() assuming word is in dictionary and has short definition 
             wordsApp.giveHintOne(jsonResponse[0].shortdef[0]);
             wordsApp.answer = randomWord;
-            console.log(randomWord);
             //then get word length
             wordsApp.getLetterBoxes(randomWord.length);
             // jsonResponse[0].fl -- hint for part of speech
