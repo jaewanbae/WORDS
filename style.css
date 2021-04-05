@@ -266,6 +266,10 @@ footer {
     section {
         margin-top: 0;
     }
+
+    input[type=text] {
+        margin-top: 10px;
+    }
 }
 
 @media (max-height: 450px) {

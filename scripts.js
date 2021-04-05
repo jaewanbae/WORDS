@@ -66,8 +66,9 @@ wordsApp.decideLength = () => {
         const message = document.createElement('p');
         const icon = document.createElement('i');
         message.textContent = `Please turn your device to landscape view for the best experience!`
-        icon.classList.add(`fas`);
-        icon.classList.add(`fa-times`);
+        icon.classList.add('fas');
+        icon.classList.add('fa-times');
+        icon.getAttribute('aria-hidden', 'true')
         container.classList.add('messageContainer');
         messageContainer.classList.add('landscapeMessage');
         messageContainer.appendChild(message);
@@ -109,10 +110,11 @@ wordsApp.autoTab = () => {
 wordsApp.giveHintOne = (hintOne) => {
     if (hintOne) {
         const pElement = document.querySelector('.definition');
-        pElement.classList.remove(`blinking`)
+        pElement.classList.remove('blinking')
         pElement.textContent = `${hintOne}`;
+    } else {
+        wordsApp.getWord();
     }
-    
 }
 
 //get number of boxes per word length
@@ -122,11 +124,11 @@ wordsApp.getLetterBoxes = (numOfBoxes) => {
     const letterBoxesInPlay = letterBoxesArray.slice(0, numOfBoxes);
     for (let letterBox of letterBoxesArray) {
         letterBox.children[1].value = "";
-        letterBox.classList.remove("inPlay");
+        letterBox.classList.remove('inPlay');
       }  
     for (let letterBox of letterBoxesInPlay) {
         letterBox.children[1].value = "";
-        letterBox.classList.add("inPlay");
+        letterBox.classList.add('inPlay');
       }     
 }
 
@@ -159,11 +161,11 @@ wordsApp.getAnswer = () => {
 
 wordsApp.checkAnswer = () => {
     if (wordsApp.finalAnswer === wordsApp.answer) {
-        wordsApp.gotIt.classList.add("feedbackAnimation");        
+        wordsApp.gotIt.classList.add('feedbackAnimation');        
     } else {
-        wordsApp.tryAgain.classList.remove("feedbackAnimation");
+        wordsApp.tryAgain.classList.remove('feedbackAnimation');
         void wordsApp.tryAgain.offsetWidth;
-        wordsApp.tryAgain.classList.add("feedbackAnimation");
+        wordsApp.tryAgain.classList.add('feedbackAnimation');
     }
 }
 
@@ -174,9 +176,9 @@ wordsApp.nextWord = () => {
         wordsApp.finalAnswer = "";
         wordsApp.answer = "";
         wordsApp.getWord();
-        wordsApp.gotIt.classList.remove("feedbackAnimation");
-        wordsApp.tryAgain.classList.remove("feedbackAnimation");
-        definition.classList.add(`blinking`);
+        wordsApp.gotIt.classList.remove('feedbackAnimation');
+        wordsApp.tryAgain.classList.remove('feedbackAnimation');
+        definition.classList.add('blinking');
         definition.textContent = `Generating Hint`;
     });
 }
