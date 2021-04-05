@@ -39,7 +39,7 @@ h1 {
 }
 
 section {
-    margin-top: 80px;
+    margin-top: 150px;
 }
 
 /*text container*/
@@ -53,6 +53,11 @@ section {
     flex-direction: column;
     align-items: center;
     border: none;
+}
+
+.textContainer {
+    width: 70%;
+    margin: 0 auto;
 }
 
 .letterContainer {
@@ -70,8 +75,7 @@ section {
 }
 
 input[type=text],
-.answerSubmit,
-.nextWord {
+button {
     border-radius: 12px;
     width: 60px;
     height: 60px;
@@ -86,13 +90,17 @@ input[type=text]:not(last-child) {
     margin-right: 5px;
 }
 
-.answerSubmit {
-    width: 120px;
-    margin-top: 2rem;
+.buttonContainer {
+    margin-top: 60px;
 }
 
+.answerSubmit,
 .nextWord {
     width: 120px;
+}
+
+.answerSubmit {
+    margin-right: 20px;
 }
 
 .answerSubmit:hover,
@@ -180,7 +188,10 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 3rem;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
 }
 
 /* blinking message */
@@ -202,8 +213,110 @@ footer {
     }
 }
 
-@media (min-width: 650px) {
-    .wrapper {
-        width: 66%;
-    };
+
+/* landscape view message */
+.messageContainer {
+    width: 80%;
+    height: 200px;
+    border: 3px black solid;
+    text-align: center;
+    background-color: bisque;
+    border-radius: 20px;
+    margin: 0 auto;
+    position: absolute;
+    z-index: 100;
+    right: 0;
+    left: 0;
+    top: 300px;
+}
+
+.landscapeMessage p {
+    padding-top: 70px;
+    margin: 0;
+}
+
+.landscapeMessage {
+    position: relative;
+    height: 200px;
+}
+
+.fa-times {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+}
+
+.fa-times:hover,
+.fa-times:focus {
+    cursor: pointer;
+}
+
+.fa-times:active{
+    transform: translateY(1px);
+}
+
+/* media query */
+@media (max-width: 800px) {
+    section {
+        margin-top: 180px;
+    }
+}
+
+@media (max-width: 450px) {
+    section {
+        margin-top: 0;
+    }
+
+    input[type=text] {
+        margin-top: 10px;
+    }
+}
+
+@media (max-height: 450px) {
+    section {
+        margin-top: 0;
+    }
+
+    .hintTitle {
+        margin: 20px auto 0;
+        font-size: 1rem;
+    }
+
+    .textContainer {
+        width: 90%;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+        padding: 15px 0;
+    }
+
+    .answerContainer {
+        margin: 20px auto;
+    }
+
+    .buttonContainer {
+        margin-top: 20px;
+    }
+
+    .messageContainer {
+        top: 100px;
+    }
+}
+
+@media (max-height: 375px) {
+    input[type=text] {
+        height: 45px;
+        width: 45px;
+    }
+
+    .nextWord, 
+    .answerSubmit {
+        height: 40px;
+        width: 80px;
+    }
+
+    .messageContainer {
+        top: 80px;
+    }
 }

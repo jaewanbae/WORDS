@@ -56,6 +56,31 @@ wordsApp.checkDef = (randomWord) => {
             })
 }
 
+//check random word length per media query
+wordsApp.decideLength = () => {
+    const mobile = window.matchMedia("(max-width: 750px)");
+    const mainElement = document.querySelector("main");
+    if (mobile.matches) { // If media query matches
+        const container = document.createElement('div');
+        const messageContainer = document.createElement('div');
+        const message = document.createElement('p');
+        const icon = document.createElement('i');
+        message.textContent = `Please turn your device to landscape view for the best experience!`
+        icon.classList.add('fas');
+        icon.classList.add('fa-times');
+        icon.getAttribute('aria-hidden', 'true')
+        container.classList.add('messageContainer');
+        messageContainer.classList.add('landscapeMessage');
+        messageContainer.appendChild(message);
+        messageContainer.appendChild(icon)
+        container.appendChild(messageContainer);
+        mainElement.appendChild(container);
+        icon.addEventListener('click', () => {
+            container.remove();
+        })
+    }
+}
+
 // Auto Tab function
 wordsApp.autoTab = () => {
     const inputField = document.querySelectorAll('input[type=text]');
@@ -83,9 +108,13 @@ wordsApp.autoTab = () => {
 
 //give hint one
 wordsApp.giveHintOne = (hintOne) => {
-    const definition = document.querySelector('.definition');
-    definition.classList.remove(`blinking`)
-    definition.textContent = `${hintOne}`;
+    if (hintOne) {
+        const pElement = document.querySelector('.definition');
+        pElement.classList.remove('blinking')
+        pElement.textContent = `${hintOne}`;
+    } else {
+        wordsApp.getWord();
+    }
 }
 
 //get number of boxes per word length
@@ -95,22 +124,13 @@ wordsApp.getLetterBoxes = (numOfBoxes) => {
     const letterBoxesInPlay = letterBoxesArray.slice(0, numOfBoxes);
     for (let letterBox of letterBoxesArray) {
         letterBox.children[1].value = "";
-        letterBox.classList.remove("inPlay");
+        letterBox.classList.remove('inPlay');
       }  
     for (let letterBox of letterBoxesInPlay) {
         letterBox.children[1].value = "";
-        letterBox.classList.add("inPlay");
+        letterBox.classList.add('inPlay');
       }     
 }
-
-//window width msg
-wordsApp.decideLength = () => {
-    const mobile = window.matchMedia("(max-width: 600px)");
-    if (mobile.matches) { // If media query matches
-        console.log("turn to landscape for a better experience");
-    }
-}
-
 
 //get input 
 wordsApp.getAnswer = () => {
@@ -141,11 +161,11 @@ wordsApp.getAnswer = () => {
 
 wordsApp.checkAnswer = () => {
     if (wordsApp.finalAnswer === wordsApp.answer) {
-        wordsApp.gotIt.classList.add("feedbackAnimation");        
+        wordsApp.gotIt.classList.add('feedbackAnimation');        
     } else {
-        wordsApp.tryAgain.classList.remove("feedbackAnimation");
+        wordsApp.tryAgain.classList.remove('feedbackAnimation');
         void wordsApp.tryAgain.offsetWidth;
-        wordsApp.tryAgain.classList.add("feedbackAnimation");
+        wordsApp.tryAgain.classList.add('feedbackAnimation');
     }
 }
 
@@ -156,9 +176,9 @@ wordsApp.nextWord = () => {
         wordsApp.finalAnswer = "";
         wordsApp.answer = "";
         wordsApp.getWord();
-        wordsApp.gotIt.classList.remove("feedbackAnimation");
-        wordsApp.tryAgain.classList.remove("feedbackAnimation");
-        definition.classList.add(`blinking`);
+        wordsApp.gotIt.classList.remove('feedbackAnimation');
+        wordsApp.tryAgain.classList.remove('feedbackAnimation');
+        definition.classList.add('blinking');
         definition.textContent = `Generating Hint`;
     });
 }
