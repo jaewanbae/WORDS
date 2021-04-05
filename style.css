@@ -272,6 +272,12 @@ footer {
     }
 }
 
+@media (max-height: 750px) {
+    section {
+        margin-top: 100px;
+    }
+}
+
 @media (max-height: 450px) {
     section {
         margin-top: 0;
