@@ -9,9 +9,6 @@ html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}bo
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
 /* General Styling */
 
-body {
-    height: 100vh;
-}
 
 html {
     font-size: 125%;
@@ -188,12 +185,11 @@ footer p {
 footer {
     background-color: bisque;
     display: flex;
+    width: 100%;
     align-items: center;
     justify-content: center;
     position: absolute;
     bottom: 0;
-    right: 0;
-    left: 0;
 }
 
 /* blinking message */
@@ -258,22 +254,18 @@ footer {
 }
 
 /* media query */
-@media (max-width: 800px) {
-    section {
-        margin-top: 180px;
-    }
-}
-
 
 @media (max-height: 750px) {
     .textContainer {
-        margin-top: 75px;
+        margin-top: 0;
+        padding-top: 60px;
     }
 }
 
 @media (max-height: 450px) {
     .textContainer {
         margin-top: 0;
+        padding-top: 10px;
     }
 
     .hintTitle {
