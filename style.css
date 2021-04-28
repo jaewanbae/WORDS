@@ -41,6 +41,7 @@ h1 {
     font-weight: 700;
     font-size: 2rem;
     padding-top: 40px;
+    padding-bottom: 20px;
 }
 
 main {
@@ -271,6 +272,11 @@ footer {
         margin-top: 0;
         padding-top: 60px;
     }
+
+    footer p {
+        padding: 10px;
+        font-size: 0.8rem;
+    }
 }
 
 @media (max-height: 450px) {
@@ -303,11 +309,6 @@ footer {
 
     .messageContainer {
         top: 100px;
-    }
-
-    footer p {
-        padding: 10px;
-        font-size: 0.8rem;
     }
 }
 
