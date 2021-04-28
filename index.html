@@ -17,51 +17,53 @@
     <main>
         <section>
             <div class="wrapper">
-                <div class="textContainer">
-                    <p class="hintTitle">Hint:</p>
-                    <p class="definition blinking">Generating Hint</p>
+                <div class="gamecontainer">
+                    <div class="textContainer">
+                        <p class="hintTitle">Hint:</p>
+                        <p class="definition blinking">Generating Hint</p>
+                    </div>
+                    <fieldset class="answerContainer">
+                        <legend class="sr-only">Enter the letters of the word you're thinking!</legend>
+                        <div class="letterContainer">
+                            <div class="letter">
+                                <label for="letter1" name="letters" class="sr-only">1st letter</label>
+                                <input type="text" id="letter1" name="letters" maxlength="1" autocomplete="off">
+                            </div>
+                            <div class="letter">
+                                <label for="letter2" name="letters" class="sr-only">2nd letter</label>
+                                <input type="text" id="letter2" name="letters" maxlength="1" autocomplete="off">
+                            </div>
+                            <div class="letter">
+                                <label for="letter3" name="letters" class="sr-only">3rd letter</label>
+                                <input type="text" id="letter3" name="letters" maxlength="1" autocomplete="off">
+                            </div>
+                            <div class="letter">
+                                <label for="letter4" name="letters" class="sr-only">4th letter</label>
+                                <input type="text" id="letter4" name="letters" maxlength="1" autocomplete="off">
+                            </div>
+                            <div class="letter">
+                                <label for="letter5" name="letters" class="sr-only">5th letter</label>
+                                <input type="text" id="letter5" name="letters" maxlength="1" autocomplete="off">
+                            </div>
+                            <div class="letter">
+                                <label for="letter6" name="letters" class="sr-only">6th letter</label>
+                                <input type="text" id="letter6" name="letters" maxlength="1" autocomplete="off">
+                            </div>
+                            <div class="letter">
+                                <label for="letter7" name="letters" class="sr-only">7th letter</label>
+                                <input type="text" id="letter7" name="letters" maxlength="1" autocomplete="off">
+                            </div>
+                            <div class="letter">
+                                <label for="letter8" name="letters" class="sr-only">8th letter</label>
+                                <input type="text" id="letter8" name="letters" maxlength="1" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="buttonContainer">
+                            <button type="submit" class="answerSubmit" name="letters">Enter</button>
+                            <button type="submit" class="nextWord">Next</button>
+                        </div>
+                    </fieldset>
                 </div>
-                <fieldset class="answerContainer">
-                    <legend class="sr-only">Enter the letters of the word you're thinking!</legend>
-                    <div class="letterContainer">
-                        <div class="letter">
-                            <label for="letter1" name="letters" class="sr-only">1st letter</label>
-                            <input type="text" id="letter1" name="letters" maxlength="1" autocomplete="off">
-                        </div>
-                        <div class="letter">
-                            <label for="letter2" name="letters" class="sr-only">2nd letter</label>
-                            <input type="text" id="letter2" name="letters" maxlength="1" autocomplete="off">
-                        </div>
-                        <div class="letter">
-                            <label for="letter3" name="letters" class="sr-only">3rd letter</label>
-                            <input type="text" id="letter3" name="letters" maxlength="1" autocomplete="off">
-                        </div>
-                        <div class="letter">
-                            <label for="letter4" name="letters" class="sr-only">4th letter</label>
-                            <input type="text" id="letter4" name="letters" maxlength="1" autocomplete="off">
-                        </div>
-                        <div class="letter">
-                            <label for="letter5" name="letters" class="sr-only">5th letter</label>
-                            <input type="text" id="letter5" name="letters" maxlength="1" autocomplete="off">
-                        </div>
-                        <div class="letter">
-                            <label for="letter6" name="letters" class="sr-only">6th letter</label>
-                            <input type="text" id="letter6" name="letters" maxlength="1" autocomplete="off">
-                        </div>
-                        <div class="letter">
-                            <label for="letter7" name="letters" class="sr-only">7th letter</label>
-                            <input type="text" id="letter7" name="letters" maxlength="1" autocomplete="off">
-                        </div>
-                        <div class="letter">
-                            <label for="letter8" name="letters" class="sr-only">8th letter</label>
-                            <input type="text" id="letter8" name="letters" maxlength="1" autocomplete="off">
-                        </div>
-                    </div>
-                    <div class="buttonContainer">
-                        <button type="submit" class="answerSubmit" name="letters">Enter</button>
-                        <button type="submit" class="nextWord">Next</button>
-                    </div>
-                </fieldset>
             </div>        
             <div class="checkmark feedback">
                 <i class="far fa-check-circle"></i>
