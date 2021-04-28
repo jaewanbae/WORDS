@@ -274,8 +274,7 @@ footer {
 
 @media (max-height: 750px) {
     section {
-        margin-top: 100px;
-    }
+        margin-top: 75px;
 }
 
 @media (max-height: 450px) {
