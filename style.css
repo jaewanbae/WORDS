@@ -34,17 +34,17 @@ h2 {
 header {
     background-color: bisque;
     text-align: center;
-    height: 10vh;
+    height: 15vh;
 }
 
 h1 {
-    padding: 1.5rem 0;
     font-weight: 700;
     font-size: 2rem;
+    padding-top: 40px;
 }
 
 main {
-    height: 90vh;
+    height: 75vh;
 }
 
 section {
@@ -303,6 +303,11 @@ footer {
 
     .messageContainer {
         top: 100px;
+    }
+
+    footer p {
+        padding: 10px;
+        font-size: 0.8rem;
     }
 }
 
