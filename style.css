@@ -9,7 +9,7 @@ html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}bo
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
 /* General Styling */
 body {
-    height: auto;
+    height: 100vh;
 }
 
 html {
@@ -28,11 +28,13 @@ h2 {
     width: 100%;
     margin: 0 auto;
     text-align: center;
+    height: auto;
 }
 
 header {
     background-color: bisque;
     text-align: center;
+    height: 10vh;
 }
 
 h1 {
@@ -41,6 +43,13 @@ h1 {
     font-size: 2rem;
 }
 
+main {
+    height: 90vh;
+}
+
+section {
+    height: 100%;
+}
 
 /*text container*/
 
