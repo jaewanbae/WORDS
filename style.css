@@ -9,6 +9,10 @@ html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}bo
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
 /* General Styling */
 
+body {
+    height: 100vh;
+}
+
 html {
     font-size: 125%;
     font-family: 'Mukta', sans-serif;
@@ -38,9 +42,6 @@ h1 {
     font-size: 2rem;
 }
 
-section {
-    margin-top: 150px;
-}
 
 /*text container*/
 
@@ -58,6 +59,7 @@ section {
 .textContainer {
     width: 70%;
     margin: 0 auto;
+    padding-top: 150px;
 }
 
 .letterContainer {
@@ -262,24 +264,15 @@ footer {
     }
 }
 
-@media (max-width: 450px) {
-    section {
-        margin-top: 0;
-    }
-
-    input[type=text] {
-        margin-top: 10px;
-    }
-}
 
 @media (max-height: 750px) {
-    section {
+    .textContainer {
         margin-top: 75px;
     }
 }
 
 @media (max-height: 450px) {
-    section {
+    .textContainer {
         margin-top: 0;
     }
 
